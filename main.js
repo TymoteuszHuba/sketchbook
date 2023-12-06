@@ -63,21 +63,6 @@ function mouseMove(e) {
 	item.style.backgroundColor = ink;
 }
 
-// function starting paint but first checking isPainting value, if is true then painting, else stop paint
-function startPaint() {
-	isPainting = !isPainting;
-
-	if (isPainting) {
-		gridItems.forEach((item) => {
-			item.addEventListener('mouseover', mouseMove);
-		});
-	} else {
-		gridItems.forEach((item) => {
-			item.removeEventListener('mouseover', mouseMove);
-		});
-	}
-}
-
 // function which toggle the square boarder
 function removeGridLines() {
 	gridItems.forEach((item) => {
@@ -123,6 +108,35 @@ function rainbowColor() {
 	}
 }
 
+// function starting paint but first checking isPainting value, if is true then painting, else stop paint
+function startPaint() {
+	if (rainbowBtn.classList.contains('btn-active')) {
+		isPainting = !isPainting;
+
+		if (isPainting) {
+			gridItems.forEach((item) => {
+				item.addEventListener('mouseover', setRandomizeColor);
+			});
+		} else {
+			gridItems.forEach((item) => {
+				item.removeEventListener('mouseover', setRandomizeColor);
+			});
+		}
+	} else {
+		isPainting = !isPainting;
+
+		if (isPainting) {
+			gridItems.forEach((item) => {
+				item.addEventListener('mouseover', mouseMove);
+			});
+		} else {
+			gridItems.forEach((item) => {
+				item.removeEventListener('mouseover', mouseMove);
+			});
+		}
+	}
+}
+
 bgColorSelect.addEventListener('input', (e) => {
 	const color = e.target.value;
 	gridContainer.style.backgroundColor = color;
@@ -133,7 +147,6 @@ gridContainer.addEventListener('click', () => {
 });
 rainbowBtn.addEventListener('click', () => {
 	rainbowBtn.classList.toggle('btn-active');
-	rainbowColor();
 });
 gridBtn.addEventListener('click', removeGridLines);
 clearBtn.addEventListener('click', clearGrid);

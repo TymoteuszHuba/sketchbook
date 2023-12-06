@@ -1,0 +1,141 @@
+* {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+
+:root {
+	--black: #000;
+	--white: #fff;
+	--gray: rgb(39, 44, 56);
+	--dark-gray: rgb(26, 29, 36);
+	--light-gray: rgb(72, 74, 80);
+	--orange: rgb(227, 142, 7);
+	--yellow: rgb(255, 218, 55);
+}
+
+body {
+	font-size: 62.5%;
+	font-family: 'Bebas Neue', sans-serif;
+	background-color: var(--light-gray);
+}
+
+.game__header {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding: 3em;
+	background-color: var(--dark-gray);
+}
+
+.game__header .title {
+	font-family: 'Press Start 2P', sans-serif;
+	font-size: 2rem;
+	color: var(--white);
+	text-transform: uppercase;
+	/* letter-spacing: .3em; */
+}
+
+.game__content {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	padding: 2em;
+	gap: 2rem;
+}
+
+.game__content .controls {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: center;
+	flex-wrap: wrap;
+	gap: 2em;
+}
+
+.controls .text {
+	color: var(--white);
+	font-size: 1.3rem;
+	letter-spacing: 0.1em;
+}
+
+.controls .pen,
+.background {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	gap: 2em;
+}
+
+.controls .pen-color-select,
+.bg-color-select {
+	border: none;
+}
+
+.controls .btn {
+	padding: 0.5em 1em;
+	border-radius: 5px;
+	border: none;
+	cursor: pointer;
+	font-family: 'Bebas Neue', sans-serif;
+	letter-spacing: 0.1em;
+	font-size: 1.2rem;
+}
+
+.game__content .grid-wrapper {
+	width: 600px;
+	height: 600px;
+	/* background-color: var(--white); */
+}
+
+.game__content .grid-container {
+	display: grid;
+	width: 100%;
+	height: 100%;
+}
+
+.border-top-left {
+	border-top: 1px solid var(--black);
+	border-left: 1px solid var(--black);
+}
+
+.btn-active {
+	background: linear-gradient(
+		90deg,
+		rgba(255, 0, 0, 1) 0%,
+		rgba(255, 154, 0, 1) 10%,
+		rgba(208, 222, 33, 1) 20%,
+		rgba(79, 220, 74, 1) 30%,
+		rgba(63, 218, 216, 1) 40%,
+		rgba(47, 201, 226, 1) 50%,
+		rgba(28, 127, 238, 1) 60%,
+		rgba(95, 21, 242, 1) 70%,
+		rgba(186, 12, 248, 1) 80%,
+		rgba(251, 7, 217, 1) 90%,
+		rgba(255, 0, 0, 1) 100%
+	);
+}
+
+@media (min-width: 857px) {
+	.game__content {
+		flex-direction: row;
+		align-items: start;
+	}
+
+	.game__content .controls {
+		flex-direction: column;
+		align-items: start;
+	}
+
+	.controls .pen,
+	.background {
+		flex-direction: column;
+
+		align-items: start;
+	}
+
+	.controls .btn {
+		width: 100%;
+	}
+}

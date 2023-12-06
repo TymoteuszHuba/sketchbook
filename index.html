@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Etch a Sketch</title>
+
+		<!-- google fonts -->
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Lato:wght@300;400;700;900&family=Press+Start+2P&display=swap"
+			rel="stylesheet"
+		/>
+		<!-- fontawesome -->
+		<script
+			src="https://kit.fontawesome.com/1387792aac.js"
+			crossorigin="anonymous"
+		></script>
+		<link rel="stylesheet" href="./css/style.css" />
+	</head>
+	<body>
+		<div class="game__header">
+			<div class="title">Etch a Sketch!</div>
+		</div>
+		<div class="game__content">
+			<div class="controls">
+				<div class="pen">
+					<input type="color" class="pen-color-select" />
+					<p class="text">Pen Color</p>
+				</div>
+				<div class="background">
+					<input type="color" class="bg-color-select" />
+					<p class="text">Background Color</p>
+				</div>
+                <button class="btn" id="rainbow-pen">Rainbow Mode</button>
+                <button class="btn" id="eraser">Eraser</button>
+                <div class="slider">
+                    <input type="range" value="16" min="1" max="60" class="slider-range">
+                    <p class="text">Grid size: <span class="range-value">16</span> x <span class="range-value">16</span></p>
+                </div>
+                <button class="btn" id="grid-toggle">Grid lines</button>
+                <button class="btn" id="clear">Clear</button>
+			</div>
+			<div class="grid-wrapper">
+                <div class="grid-container"></div>
+            </div>
+		</div>
+		<script src="./main.js"></script>
+	</body>
+</html>

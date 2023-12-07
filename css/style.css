@@ -100,7 +100,7 @@ body {
 	border-left: 1px solid var(--black);
 }
 
-.btn-active {
+.btn-rainbow-active {
 	background: linear-gradient(
 		90deg,
 		rgba(255, 0, 0, 1) 0%,
@@ -115,6 +115,11 @@ body {
 		rgba(251, 7, 217, 1) 90%,
 		rgba(255, 0, 0, 1) 100%
 	);
+}
+
+.btn-eraser-active {
+    /* opacity: 0.5; */
+    background-color: var(--yellow);
 }
 
 @media (min-width: 857px) {

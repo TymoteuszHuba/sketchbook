@@ -4,7 +4,7 @@ const gridBtn = document.querySelector('#grid-toggle');
 const penColorSelect = document.querySelector('.pen-color-select');
 const bgColorSelect = document.querySelector('.bg-color-select');
 const rainbowBtn = document.querySelector('#rainbow-pen');
-const eraser = document.querySelector('#eraser');
+const eraserBtn = document.querySelector('#eraser');
 const clearBtn = document.querySelector('#clear');
 
 let gridSize = 16;
@@ -63,6 +63,11 @@ function mouseMove(e) {
 	item.style.backgroundColor = ink;
 }
 
+function erase(e) {
+	const item = e.target;
+	item.style.backgroundColor = bgColor;
+}
+
 // function which toggle the square boarder
 function removeGridLines() {
 	gridItems.forEach((item) => {
@@ -74,6 +79,7 @@ function removeGridLines() {
 function clearGrid() {
 	gridItems.forEach((item) => {
 		item.style.backgroundColor = '';
+        bgColor = '#ffffff';
 		gridContainer.style.backgroundColor = bgColor;
 		bgColorSelect.value = '#ffffff';
 		penColorSelect.value = '#000000';
@@ -110,7 +116,19 @@ function rainbowColor() {
 
 // function starting paint but first checking isPainting value, if is true then painting, else stop paint
 function startPaint() {
-	if (rainbowBtn.classList.contains('btn-active')) {
+	if (eraserBtn.classList.contains('btn-eraser-active')) {
+		isPainting = !isPainting;
+
+		if (isPainting) {
+			gridItems.forEach((item) => {
+				item.addEventListener('mouseover', erase);
+			});
+		} else {
+			gridItems.forEach((item) => {
+				item.removeEventListener('mouseover', erase);
+			});
+		}
+	} else if (rainbowBtn.classList.contains('btn-rainbow-active')) {
 		isPainting = !isPainting;
 
 		if (isPainting) {
@@ -139,6 +157,7 @@ function startPaint() {
 
 bgColorSelect.addEventListener('input', (e) => {
 	const color = e.target.value;
+	bgColor = color;
 	gridContainer.style.backgroundColor = color;
 });
 
@@ -146,7 +165,10 @@ gridContainer.addEventListener('click', () => {
 	startPaint();
 });
 rainbowBtn.addEventListener('click', () => {
-	rainbowBtn.classList.toggle('btn-active');
+	rainbowBtn.classList.toggle('btn-rainbow-active');
+});
+eraserBtn.addEventListener('click', () => {
+	eraserBtn.classList.toggle('btn-eraser-active');
 });
 gridBtn.addEventListener('click', removeGridLines);
 clearBtn.addEventListener('click', clearGrid);

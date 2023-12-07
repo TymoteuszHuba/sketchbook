@@ -100,6 +100,14 @@ body {
 	border-left: 1px solid var(--black);
 }
 
+.grid-size {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 1em;
+}
+
 .btn-rainbow-active {
 	background: linear-gradient(
 		90deg,
@@ -118,8 +126,8 @@ body {
 }
 
 .btn-eraser-active {
-    /* opacity: 0.5; */
-    background-color: var(--yellow);
+	/* opacity: 0.5; */
+	background-color: var(--yellow);
 }
 
 @media (min-width: 857px) {
@@ -143,4 +151,8 @@ body {
 	.controls .btn {
 		width: 100%;
 	}
+
+    .grid-size {
+        flex-direction: column;
+    }
 }
